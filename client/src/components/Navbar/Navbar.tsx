@@ -15,6 +15,7 @@ function Navbar() {
           <li>
             <NavLink to="/create">Create</NavLink>
           </li>
+          
         </ul>
       </nav>
 

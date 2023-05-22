@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
-import "./Create.scss";
+import "./CreateIssue.scss";
+import Button from "../Button/Button";
 
 const Create = () => {
   const [input, setInput] = useState({
@@ -18,7 +19,6 @@ const Create = () => {
   const handleInputChange = (event) => { 
     const { name, value } = event.target;
     setInput({ ...input, [name]: value })
-    
   }
 
   const createIssue = (newIssue) => {
@@ -41,7 +41,7 @@ const Create = () => {
 
 
   return (
-    <form  onSubmit={handleCreateSubmit} action="">
+    <form className="CreateIssue" onSubmit={handleCreateSubmit} action="">
       <h1>Create Issue</h1>
     <label htmlFor="defectid">Defect ID</label>
       <input type="text" placeholder="Defect ID" name="defectId" id="defectId" value={input.defectId}  onChange={handleInputChange}/>
@@ -67,7 +67,7 @@ const Create = () => {
       <label htmlFor="createdBy">Created By</label>
       <input type="text" placeholder="Created By" name="createdBy" id="createdBy" value={input.createdBy}  onChange={handleInputChange}/>
       
-    <button>Create</button>
+    <Button style={{backgroundColor:"#3a86ff", color:"#fff"}}>Create</Button>
     </form>
   )
 

@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Home from "../pages/home/Home";
 import DefectList from "../components/DefectList/DefectList";
-import Create from "../components/Create/Create";
+import CreateIssue from "../components/CreateIssue/CreateIssue";
 
 
 
@@ -12,7 +12,7 @@ const PageRouter = () => {
         <Route path="/" element={<Navbar />}>
         <Route index element={<Home />} />
         <Route path="/defects" element={<DefectList />} />
-        <Route path="/create" element={<Create />}/>
+        <Route path="/create" element={<CreateIssue />}/>
           {/* <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} /> */}

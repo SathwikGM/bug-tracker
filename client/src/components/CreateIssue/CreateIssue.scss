@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap');
+
+.CreateIssue{
+  font-family: 'Roboto Serif', serif;
+  width: 80vw;
+  margin: 1em  auto;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1{
+    text-align: center;
+  }
+  label{
+    margin: 0.5em;
+    display: inline;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+  }
+  input{
+    display: inline;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #0000001e;
+    outline: none;
+  }
+  Button{
+    margin-left: auto;
+    cursor: pointer;
+  }
+ }
