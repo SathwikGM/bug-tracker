@@ -1,9 +1,11 @@
 
-
+import './Home.scss';
 const Home = () => {
   return (
     <>
-    <h1>Home</h1>
+      <div className='Home'>
+        <h1>Home</h1>
+    </div>
     </>
   )
 }

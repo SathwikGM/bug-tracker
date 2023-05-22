@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap');
+
 .Navbar{
   background-color: #fff;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5);
- 
+font-family: 'Roboto Serif', serif;
   ul{
     display: flex;
     align-items: end;
@@ -12,9 +14,10 @@
   }
   li{
     padding: 1em;
-    background-color:blanchedalmond
+    
   }
   a {
+    padding: 1em;
     font-weight: 500;
     color: #000;
     text-decoration: inherit;
@@ -22,5 +25,6 @@
 
   a:hover {
     color: #1e29fd;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5);
   }
 }
