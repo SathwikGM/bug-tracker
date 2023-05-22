@@ -31,13 +31,46 @@ app.get('/', (req, res) => {
   res.send('MERN BugTracker');
 });
 
+// Get methof to send the list of defects
 app.get('/defectList', async(req, res) => {
   const defects = await Defects.find({});
   // console.log(defects)
   res.json(defects);
-  
 });
 
+app.post('/createissue',  async(req, res) => {
+  const { defectId, title,description,owners,status,priority,environment,createdBy } = req.body;
+
+  try {
+    const existingDefect = await Defects.findOne({ defectId });
+        if (existingDefect) {
+    
+          return res.status(500).json({ error: 'An error occurred' });
+        }
+        if (!existingDefect) {
+          
+            const newIssue = new Defects({
+            defectId,
+            title,
+            description,
+            owners,
+            status,
+            priority,
+            environment,
+            createdBy,
+            createdDate: new Date()
+   
+          });
+
+          newIssue.save();
+          res.sendStatus(204);
+        }
+      
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+});
 
 
 

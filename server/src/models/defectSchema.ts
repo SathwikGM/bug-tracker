@@ -54,7 +54,8 @@ const defectsSchema = new Schema({
   },
   createdDate: {
     type: Date,
-    required: true
+    required: true,
+    default: Date.now,
   }
 
 })

@@ -4,7 +4,7 @@ import "./Create.scss";
 
 const Create = () => {
   const [input, setInput] = useState({
-    defectid:"",
+    defectId:"",
     title: "",
     description: "",
     owners: "",
@@ -44,7 +44,7 @@ const Create = () => {
     <form  onSubmit={handleCreateSubmit} action="">
       <h1>Create Issue</h1>
     <label htmlFor="defectid">Defect ID</label>
-      <input type="text" placeholder="Defect ID" name="defectid" id="defectid" value={input.defectid}  onChange={handleInputChange}/>
+      <input type="text" placeholder="Defect ID" name="defectId" id="defectId" value={input.defectId}  onChange={handleInputChange}/>
       
       <label htmlFor="title">Title</label>
       <input type="text" placeholder="Title" name="title" id="title" value={input.title} onChange={handleInputChange}/>
