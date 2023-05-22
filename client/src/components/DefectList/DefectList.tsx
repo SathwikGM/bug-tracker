@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import "./DefectList.scss";
 
 
 // Defining type script interface
@@ -53,8 +54,9 @@ const DefectList = () => {
 
  
 
-    return (
-      <table>
+    return (<>
+      <div className="DefectList">
+        <table>
       <thead>
         <tr>
           <th>Defect ID</th>
@@ -83,7 +85,9 @@ const DefectList = () => {
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+      </div>
+      </>
     )
 
 }

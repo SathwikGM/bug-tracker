@@ -1,0 +1,14 @@
+.DefectList{
+  margin: 1em;
+  // padding: 1em;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+
+  table{
+    border-collapse: collapse;
+  }
+  th, td{
+    border: solid 1px #00000024;
+    padding: 1em;
+  }
+}

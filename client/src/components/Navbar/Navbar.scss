@@ -1,0 +1,26 @@
+.Navbar{
+  background-color: #fff;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.5);
+ 
+  ul{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    list-style: none;
+    padding: 0;
+    
+  }
+  li{
+    padding: 1em;
+    background-color:blanchedalmond
+  }
+  a {
+    font-weight: 500;
+    color: #000;
+    text-decoration: inherit;
+  }
+
+  a:hover {
+    color: #1e29fd;
+  }
+}
