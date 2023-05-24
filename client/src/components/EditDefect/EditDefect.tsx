@@ -1,21 +1,29 @@
 import { useState } from "react";
 import axios from 'axios';
-import "./CreateIssue.scss";
+import "./EditDefect.scss";
 import Button from "../Button/Button";
 import { InputState } from '../../Types/CreateIssueTypes';
+import { IDefect } from "../../Types/DefectTypes";
 
-const CreateIssue = () => {
+interface EditDefectProps {
+  defect: IDefect;
+}
+
+const EditDefect: React.FC<EditDefectProps> = ({ defect}) => {
+  const {_id, defectId, title, description, owners, status, priority, environment, createdBy} = defect;
   const [input, setInput] = useState<InputState>({
-    _id:"",
-    defectId:"",
-    title: "",
-    description: "",
-    owners: [''],
-    status: "",
-    priority: "",
-    environment: "",
-    createdBy: "",
+    _id:_id,
+    defectId:defectId,
+    title: title,
+    description: description,
+    owners: owners,
+    status: status,
+    priority: priority,
+    environment: environment,
+    createdBy: createdBy,
   });
+
+  
 
 // Function to handle input changes
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
@@ -23,11 +31,12 @@ const CreateIssue = () => {
     setInput({ ...input, [name]: value })
   }
 
-  const createIssue = (newIssue: InputState) => {
+  const UpdateDefect = (updatedefect: InputState) => {
     axios
-      .post("http://localhost:3000/createissue", newIssue)
+      .put("http://localhost:3000/updatedefect", updatedefect)
       .then((response) => {
         console.log(response);
+
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +46,7 @@ const CreateIssue = () => {
   // Function to handle form submission
   const handleCreateSubmit: React.FormEventHandler<HTMLFormElement> = (event)=>{
     event.preventDefault();
-    createIssue(input);
+    UpdateDefect(input);
      console.log(input)
   }
 
@@ -69,10 +78,10 @@ const CreateIssue = () => {
       <label htmlFor="createdBy">Created By</label>
       <input type="text" placeholder="Created By" name="createdBy" id="createdBy" value={input.createdBy}  onChange={handleInputChange} required/>
       
-    <Button style={{backgroundColor:"#3a86ff", color:"#fff"}}>Create</Button>
+    <Button style={{backgroundColor:"#3a86ff", color:"#fff"}}>Save</Button>
     </form>
   )
 
 }
 
-export default CreateIssue;
+export default EditDefect;

@@ -79,7 +79,41 @@ app.delete("/delete/:id", async(req, res) => {
   catch (error) {
     res.status(500).json({ error: "An error occurred" });
   }
+})
+ 
+// updating existing Defect
+app.put("/updatedefect", async(req, res) => {
+  const { _id, defectId,
+            title,
+            description,
+            owners,
+            status,
+            priority,
+            environment,
+            createdBy,
+  } = req.body;
+  console.log(req.body);
+  
+ 
+  try {
+    const updatedDefect = await Defects.findByIdAndUpdate(_id, {defectId,
+            title,
+            description,
+            owners,
+            status,
+            priority,
+            environment,
+      createdBy,
+    }, { new: true });
+    // console.log(updatedDefect)
+    res.sendStatus(204);
+    // return updatedDefect;
+  }
+  catch (error) {
+    res.status(500).json({ error: "An error occurred" });
+  }
  })
+
 
 
 

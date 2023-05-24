@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./DefectList.scss";
-import { IDefect } from "../../Types/DefectListTypes";
+import { IDefect } from "../../Types/DefectTypes";
 import Button from "../Button/Button";
+import EditDefect from "../EditDefect/EditDefect";
 
 
 
 
 const DefectList = () => {
+  const [selectedDefect, setselectedDefect]=useState<IDefect | null>(null)
   const [defects, setDefects] = useState<IDefect[]>([
     {
       _id: "",
@@ -44,9 +46,9 @@ const DefectList = () => {
   });
   }
 
-  const handleDelete = (defectId:string) => {
-    console.log(defectId)
-    axios.delete(`http://localhost:3000/delete/${defectId}`)
+  const handleDelete = (id:string) => {
+    console.log(id)
+    axios.delete(`http://localhost:3000/delete/${id}`)
       .then(() => {
         fetchDefects();
       })
@@ -54,9 +56,19 @@ const DefectList = () => {
     // handle error
     console.log(error);
   })
- }
+  }
+  
+  const handleEdit = (defect:IDefect) => {
+    
+    setselectedDefect(defect)
+  }
 
-    return (<>
+  return (<>
+      {selectedDefect && (
+        <div className="edit-defect-popup">
+          <EditDefect defect={selectedDefect} />
+        </div>
+      )}
       <div className="DefectList">
         <table>
       <thead>
@@ -84,6 +96,7 @@ const DefectList = () => {
             <td>{defect.environment}</td>
             <td>{defect.createdBy}</td>
             <td>{defect.createdDate}</td>
+            <td><Button onClick={()=>handleEdit(defect)} style={{width:"20px", backgroundColor:"#fff"}}><i className='fa fa-edit' style={{fontSize:"24px", color: 'blue'}}></i></Button></td>
             <td><Button onClick={()=>handleDelete(defect._id)} style={{width:"20px", backgroundColor:"#fff"}} ><i className="material-icons" style={{fontSize:"24px", color:"red" }}>delete</i></Button></td>
           </tr>
         ))}
