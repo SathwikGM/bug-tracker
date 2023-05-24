@@ -67,6 +67,19 @@ app.post('/createissue',  async(req, res) => {
   }
 });
 
+// deleting existing Defect
+
+app.delete("/delete/:id", async(req, res) => {
+  const {id}  = req.params;
+  try {
+    const deleteDefect = await Defects.findByIdAndDelete({_id: id});
+      // console.log(id)
+      res.sendStatus(204);
+  }
+  catch (error) {
+    res.status(500).json({ error: "An error occurred" });
+  }
+ })
 
 
 

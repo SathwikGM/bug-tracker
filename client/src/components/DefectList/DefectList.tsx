@@ -1,24 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./DefectList.scss";
+import { IDefect } from "../../Types/DefectListTypes";
+import Button from "../Button/Button";
 
 
-// Defining type script interface
-interface IDefect{
-  defectId: string;
-  title: string;
-  description: string;
-  owners: string[];
-  status: string;
-  priority: string;
-  environment: string;
-  createdBy: string;
-  createdDate: Date;
-}
+
 
 const DefectList = () => {
-  const [defects, setDefects] = useState([
+  const [defects, setDefects] = useState<IDefect[]>([
     {
+      _id: "",
   defectId: "",
   title: "",
   description: "",
@@ -27,7 +19,7 @@ const DefectList = () => {
   priority: "",
   environment: "",
   createdBy: "",
-  createdDate: ""
+  createdDate: "",
     }
   ]);
 
@@ -52,7 +44,17 @@ const DefectList = () => {
   });
   }
 
- 
+  const handleDelete = (defectId:string) => {
+    console.log(defectId)
+    axios.delete(`http://localhost:3000/delete/${defectId}`)
+      .then(() => {
+        fetchDefects();
+      })
+    .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+ }
 
     return (<>
       <div className="DefectList">
@@ -72,7 +74,7 @@ const DefectList = () => {
       </thead>
       <tbody>
         {defects.map(defect => (
-          <tr key={defect.defectId}>
+          <tr key={defect._id}>
             <td>{defect.defectId}</td>
             <td>{defect.title}</td>
             <td>{defect.description}</td>
@@ -82,6 +84,7 @@ const DefectList = () => {
             <td>{defect.environment}</td>
             <td>{defect.createdBy}</td>
             <td>{defect.createdDate}</td>
+            <td><Button onClick={()=>handleDelete(defect._id)} style={{width:"20px", backgroundColor:"#fff"}} ><i className="material-icons" style={{fontSize:"24px", color:"red" }}>delete</i></Button></td>
           </tr>
         ))}
       </tbody>
