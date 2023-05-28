@@ -92,10 +92,7 @@ app.put("/updatedefect", async(req, res) => {
             environment,
             createdBy,
   } = req.body;
-  console.log(req.body);
-  
- 
-  try {
+   try {
     const updatedDefect = await Defects.findByIdAndUpdate(_id, {defectId,
             title,
             description,

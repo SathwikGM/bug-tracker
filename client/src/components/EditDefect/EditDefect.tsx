@@ -26,7 +26,7 @@ const EditDefect: React.FC<EditDefectProps> = ({ defect}) => {
   
 
 // Function to handle input changes
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => { 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>| React.ChangeEvent<HTMLSelectElement>) => { 
     const { name, value } = event.target;
     setInput({ ...input, [name]: value })
   }
@@ -47,7 +47,7 @@ const EditDefect: React.FC<EditDefectProps> = ({ defect}) => {
   const handleCreateSubmit: React.FormEventHandler<HTMLFormElement> = (event)=>{
     event.preventDefault();
     UpdateDefect(input);
-     console.log(input)
+    //  console.log(input)
   }
 
 
@@ -70,7 +70,13 @@ const EditDefect: React.FC<EditDefectProps> = ({ defect}) => {
       <input type="text" placeholder="Status" name="status" id="status" value={input.status} onChange={handleInputChange} required/>
 
       <label htmlFor="priority">Priority</label>
-      <input type="text" placeholder="Priority" name="priority" id="priority" value={input.priority} onChange={handleInputChange} required/>
+      {/* <input type="text" placeholder="Priority" name="priority" id="priority" value={input.priority} onChange={handleInputChange} required /> */}
+         <select name="priority" value={input.priority} id="priority" onChange={handleInputChange} required>
+        <option value="">Select an option</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
       
       <label htmlFor="environment">Environment</label>
       <input type="text" placeholder="Environment" name="environment" id="environment" value={input.environment} onChange={handleInputChange} required />

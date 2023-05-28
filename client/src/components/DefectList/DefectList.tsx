@@ -4,26 +4,31 @@ import "./DefectList.scss";
 import { IDefect } from "../../Types/DefectTypes";
 import Button from "../Button/Button";
 import EditDefect from "../EditDefect/EditDefect";
-
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { setDefects } from "../../reducers/slices/defectsSlice";
 
 
 
 const DefectList = () => {
+
+  const dispatch = useAppDispatch();
+  const defects = useAppSelector(state => state.defects.defects);
   const [selectedDefect, setselectedDefect]=useState<IDefect | null>(null)
-  const [defects, setDefects] = useState<IDefect[]>([
-    {
-      _id: "",
-  defectId: "",
-  title: "",
-  description: "",
-  owners: [],
-  status: "",
-  priority: "",
-  environment: "",
-  createdBy: "",
-  createdDate: "",
-    }
-  ]);
+  // const [defects, setDefects] = useState<IDefect[]>([
+  //   {
+  //     _id: "",
+  // defectId: "",
+  // title: "",
+  // description: "",
+  // owners: [],
+  // status: "",
+  // priority: "",
+  // environment: "",
+  // createdBy: "",
+  // createdDate: "",
+  //   }
+  // ]);
+
 
    useEffect(() => {
     fetchDefects();
@@ -34,7 +39,7 @@ const DefectList = () => {
   .then(function (response) {
     // handle success
     const defectsData = response.data;
-    setDefects(defectsData)
+    dispatch(setDefects(defectsData))
     console.log(response);
   })
   .catch(function (error) {
