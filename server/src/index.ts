@@ -112,7 +112,14 @@ app.put("/updatedefect", async(req, res) => {
  })
 
 
-
+// serach defects
+app.post('/search', async (req, res) => {
+  const { search } = req.body;
+  console.log(search)
+  const foundDefect = await Defects.findOne({ defectId: search }).exec();
+  res.json(foundDefect)
+  console.log(foundDefect)
+ })
 
 
 
