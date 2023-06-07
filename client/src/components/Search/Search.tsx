@@ -22,22 +22,17 @@ const Search = () => {
        .then((response) => {
          const data = response.data;
          setSearchData(data);
-        console.log(data);
-        
+         console.log(data);
       })
       .catch(error => {
         console.log(error);
       })
   }
   const handleSearchDataClick = () => {
-    
   setShowEditDefect(true)
-  
 }
   return (
-    
     <div className='Search'>
-      
       <form action="" onSubmit={handleSearchSubmit}>
         <label htmlFor="search"></label>
         <input type="text" id="search" placeholder='search' value={search} onChange={handleSearchChange} />
@@ -46,11 +41,9 @@ const Search = () => {
 
       <div>
         <p onClick={handleSearchDataClick}>{searchData.defectId}  {searchData.title}</p>
-       
-       
       </div>
-      <div>{searchData && showEditDefect && <EditDefect defect={searchData} />}</div>
-    </div>
+      {searchData && showEditDefect && <EditDefect defect={searchData} />}
+      </div>
   )
 }
 

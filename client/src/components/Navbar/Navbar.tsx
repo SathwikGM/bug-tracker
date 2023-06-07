@@ -1,18 +1,16 @@
 import { Outlet, NavLink } from "react-router-dom";
 import './Navbar.scss';
-import Search from "../Search/search";
+import Search from "../Search/Search";
 
 function Navbar() {
   return (
     <>
       <nav className="Navbar">
-        
         <ul>
-          <li><Search/></li>
+          <li className="search-li"><Search/></li>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          
           <li>
             <NavLink to="/defects">Defects</NavLink>
           </li>

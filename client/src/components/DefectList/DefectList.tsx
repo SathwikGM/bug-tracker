@@ -69,12 +69,11 @@ const DefectList = () => {
   }
 
   return (<>
-      {selectedDefect && (
+      {selectedDefect ? (
         <div className="edit-defect-popup">
           <EditDefect defect={selectedDefect} />
         </div>
-      )}
-      <div className="DefectList">
+      ):(<div className="DefectList">
         <table>
       <thead>
         <tr>
@@ -86,7 +85,10 @@ const DefectList = () => {
           <th>Priority</th>
           <th>Environment</th>
           <th>Created By</th>
-          <th>Created Date</th>
+              <th>Created Date</th>
+              <th></th>
+              <th></th>
+
         </tr>
       </thead>
       <tbody>
@@ -107,7 +109,8 @@ const DefectList = () => {
         ))}
       </tbody>
       </table>
-      </div>
+      </div>)}
+      
       </>
     )
 
